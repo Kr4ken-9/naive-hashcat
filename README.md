@@ -1,17 +1,19 @@
 # Naive Hashcat
 
-Crack password hashes without the fuss. Naive hashcat is a plug-and-play script that is pre-configured with naive, emperically-tested, "good enough" parameters/attack types. Run hashcat attacks using `./naive-hashcat.sh` without having to know what is going on "under the hood".
+Crack password hashes without the fuss. Naive hashcat is a plug-and-play script that is pre-configured with naive, emperically-tested, "good enough" parameters/attack types. Run hashcat attacks using `./naive-hashcat.sh` without having to know what is going on under the hood.
 
 __DISCLAIMER: This software is for educational purposes only. This software should not be used for illegal activity. The author is not responsible for its use. Don't be a dick.__
 
 ## Getting started
 
 ```bash
-git clone https://github.com/brannondorsey/naive-hashcat
+git clone --recursive git@github.com:Kr4ken-9/naive-hashcat.git
 cd naive-hashcat
 
-# if you are on MacOS/OSX, run this. If on linux, skip...
-./build-hashcat-osx.sh
+# Build hashcat
+# from https://github.com/hashcat/hashcat/blob/master/BUILD.md
+./build
+
 
 # download the 134MB rockyou dictionary file
 curl -L -o dicts/rockyou.txt https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
@@ -20,7 +22,7 @@ curl -L -o dicts/rockyou.txt https://github.com/brannondorsey/naive-hashcat/rele
 ./naive-hashcat.sh
 ```
 
-## What it do?
+## What does it do?
 
 `./naive-hashcat.sh` assumes that you have hashed passwords that you would like to know the plaintext equivalent of. Likely, you've come across a text file that contains leaked accounts/emails/usernames matched with a cryptographic hash of a corresponding password. Esentially something that looks like:
 
@@ -57,7 +59,7 @@ To crack your hashes, pass this file as `HASH_FILE=hashes.txt` to the command be
 `naive-hashcat.sh` takes, at most, three parameters. All parameters are expressed using unix environment variables. The command below shows the default values set for each of the configurable environment variables that `naive-hashcat.sh` uses:
 
 ```bash
-HASH_FILE=hashcat-3.6.0/examples0.hash POT_FILE=hashcat.pot HASH_MODE=0 ./naive-hashcat.sh
+HASH_FILE=hashcat/examples0.hash POT_FILE=hashcat.pot HASH_MODE=0 ./naive-hashcat.sh
 ```
 
 - `HASH_FILE` is a text file with one hash per line. These are the password hashes to be cracked.
