@@ -7,27 +7,27 @@ HASH_TYPE="${HASH_TYPE:-0}"
 
 # check OS
 if [ "$(uname)" == 'Darwin' ] ; then 
-  if [ -f hashcat/hashcat ] ; then 
-    HASHCAT="./hashcat/hashcat" 
-  else 
-    echo "You are running naive-hashcat on a MacOS/OSX machine but have not yet built hashcat." 
-    echo "Please run ./build and try again." 
-    exit 1 
-  fi 
+    if [ -f hashcat/hashcat ] ; then 
+        HASHCAT="./hashcat/hashcat" 
+    else 
+        echo "You are running naive-hashcat on a MacOS/OSX machine but have not yet built hashcat." 
+        echo "Please run ./build and try again." 
+        exit 1 
+    fi 
 elif [ "$(uname)" == 'Linux' ] ; then 
-  if [ -f hashcat/hashcat ] ; then
-    HASHCAT="./hashcat/hashcat" 
-  else 
-    echo "You are running naive-hashcat on a Linux machine but have not yet built hashcat." 
-    echo "Please run ./build and try again." 
-    exit 1
-  fi 
+    if [ -f hashcat/hashcat ] ; then
+        HASHCAT="./hashcat/hashcat" 
+    else 
+        echo "You are running naive-hashcat on a Linux machine but have not yet built hashcat." 
+        echo "Please run ./build and try again." 
+        exit 1
+    fi 
 else
-  if [ $(uname -m) == 'x86_64' ]; then
-    HASHCAT="./hashcat/hashcat64.bin"
-  else
-    HASHCAT="./hashcat/hashcat32.bin"
-  fi
+    if [ $(uname -m) == 'x86_64' ]; then
+        HASHCAT="./hashcat/hashcat64.bin"
+    else
+        HASHCAT="./hashcat/hashcat32.bin"
+    fi
 fi
 
 # LIGHT
