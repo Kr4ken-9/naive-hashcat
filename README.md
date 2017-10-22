@@ -12,7 +12,7 @@ cd naive-hashcat
 
 # Build hashcat
 # from https://github.com/hashcat/hashcat/blob/master/BUILD.md
-./build
+./build.sh
 
 
 # download the 134MB rockyou dictionary file

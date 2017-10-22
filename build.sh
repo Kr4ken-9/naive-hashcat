@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Go to the hashcat directory
 cd hashcat
 
